@@ -5,7 +5,64 @@
   Ionic pages and navigation.
 -->
 <ion-content padding class="page">
-  <div class="contet-form">
-    
+  <div class="contet-form center">
+    <ion-row>
+      <ion-col></ion-col>
+      <ion-col width-67>
+        <img src="assets/imgs/hat.png" alt="">
+      </ion-col>
+      <ion-col></ion-col>
+    </ion-row>
+    <form padding (ngSubmit)="login()">
+      <ion-row>
+        <ion-col>
+          <ion-list >
+
+            <ion-item>
+              <ion-label floating>
+                <ion-icon ios="ios-contact" md="md-contact"></ion-icon>
+                Email
+              </ion-label>
+              <ion-input type="email" placeholder="" name="email" [(ngModel)]="email" required></ion-input>
+            </ion-item>
+
+            <ion-item>
+              <ion-label floating>
+                <ion-icon ios="ios-key" md="md-key"></ion-icon>
+                Password
+              </ion-label>
+              <ion-input type="password" name="password" [(ngModel)]="password" required></ion-input>
+            </ion-item>
+            <div margin-top>
+
+              <button ion-button type="submit" block color="secondary">
+                <div *ngIf="!mostrarSpiner">
+                  <ion-icon ios="ios-log-in" md="md-log-in"></ion-icon>
+                  Login
+                </div>
+                <div *ngIf="mostrarSpiner">
+                  <ion-spinner ></ion-spinner>
+                </div>
+              </button>
+
+
+              <button ion-button color="facebook" float-left col-5>
+                <ion-icon ios="logo-facebook" md="logo-facebook"></ion-icon>
+              </button>
+
+              <button ion-button color="rojo" float-right col-5>
+                <ion-icon ios="logo-google" md="logo-google"></ion-icon>
+              </button>
+
+              <button ion-button clear class="link" float-left no-padding>¿Recuperar password?</button>
+
+              <button ion-button clear class="link" float-right no-padding>Registrarse</button>
+            </div>
+
+
+          </ion-list>
+        </ion-col>
+      </ion-row>
+    </form>
   </div>
 </ion-content>

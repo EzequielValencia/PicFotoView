@@ -14,12 +14,21 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'login.html',
 })
 export class LoginPage {
-
+  mostrarSpiner:boolean;
+  email:string;
+  password:string;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+    this.mostrarSpiner=false;
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad LoginPage');
+  }
+
+  public login(){
+    this.mostrarSpiner=!this.mostrarSpiner;
+    console.log("Estoy en login "+this.mostrarSpiner);
+    console.log("Email "+this.email+" pass: "+this.password);
   }
 
 }
