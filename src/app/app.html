@@ -1,1 +1,13 @@
-<ion-nav [root]="rootPage"></ion-nav>
+<ion-menu type="overlay" [content]="mycontent">
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>
+        Configuración
+      </ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    <menu></menu>
+  </ion-content>
+</ion-menu>
+<ion-nav [root]="rootPage" #mycontent></ion-nav>
