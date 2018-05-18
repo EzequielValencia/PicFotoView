@@ -12,11 +12,11 @@ import { Platform } from 'ionic-angular';
 @Injectable()
 export class LoginProvider {
   private credenciales:any={token:null,user_id:null};
-  constructor(public http: HttpClient,
+
+  constructor( public http: HttpClient,
               private storage:Storage,
               private platform:Platform) {
-    this.verificarSessionIniciada();
-    
+
   }
 
   private verificarSessionIniciada(){
@@ -32,6 +32,7 @@ export class LoginProvider {
   }
 
   public existeSessionIniciada(){
+    this.verificarSessionIniciada();
     return  this.credenciales.token!=null && this.credenciales.user_id!=null;
   }
 
@@ -49,5 +50,7 @@ export class LoginProvider {
       localStorage.removeItem('user_id');
     }
   }
-
+  public getCredenciales(){
+    return this.credenciales;
+  }
 }

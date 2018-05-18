@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
-import { AlertController } from 'ionic-angular';
-import {LoginProvider} from '../../providers/login/login'
+import {App} from 'ionic-angular';
+import { AlertController,MenuController } from 'ionic-angular';
+import {LoginProvider} from '../../providers/login/login';
+import {LoginPage}  from '../../pages/login/login';
 
 /**
  * Generated class for the MenuComponent component.
@@ -13,16 +15,18 @@ import {LoginProvider} from '../../providers/login/login'
   templateUrl: 'menu.html'
 })
 export class MenuComponent {
-
   text: string;
 
   constructor(private alerta:AlertController,
-              private loginProvider:LoginProvider) {
+              private loginProvider:LoginProvider,
+              private app:App,
+              private menu:MenuController) {
 
   }
   public cerrarSecion(){
+    this.menu.close();
     this.alerta.create({
-      title:"Esta seguro de cerrar seción",
+      subTitle:"Esta seguro de cerrar sesión",
       buttons:[{
         text:'Cancelar',
         role:'cancel',
@@ -33,6 +37,7 @@ export class MenuComponent {
         text:'Cerrar seción',
         handler:()=>{
           this.loginProvider.cerrarSecion();
+          this.app.getActiveNav().setRoot(LoginPage);
         }
       }]
     }).present();

@@ -15,7 +15,7 @@
       <ion-col></ion-col>
     </ion-row>
 
-    <form padding (ngSubmit)="login()">
+    <form padding>
       <ion-row>
         <ion-col>
           <ion-list >
@@ -34,7 +34,7 @@
               <ion-input type="password" name="password" [(ngModel)]="password" required></ion-input>
             </ion-item>
             <div margin-top>
-              <button ion-button type="submit" block color="secondary">
+              <button ion-button type="submit" block color="secondary" (click)="login()">
                 <span *ngIf="!mostrarSpiner">
                   <ion-icon ios="ios-log-in" md="md-log-in"></ion-icon>
                   Login
@@ -43,15 +43,12 @@
                   <ion-spinner ></ion-spinner>
                 </span>
               </button>
-              <button ion-button clear class="link" float-left no-padding>¿Recuperar password?</button>
-              <button ion-button clear class="link" float-right no-padding>Registrarse</button>
             </div>
-
-
+            <button ion-button clear class="link" float-left no-padding>¿Recuperar password?</button>
+            <button ion-button clear class="link" float-right no-padding (click)="irARegistrar()">Registrarse</button>
           </ion-list>
         </ion-col>
       </ion-row>
     </form>
-
   </div>
 </ion-content>

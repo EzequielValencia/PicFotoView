@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
+import { MateriasProvider } from '../../providers/materias/materias';
 /**
  * Generated class for the ListaMateriasPage page.
  *
@@ -14,8 +14,17 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'lista-materias.html',
 })
 export class ListaMateriasPage {
+  public materias:any=[];
+  constructor(public navCtrl: NavController,
+  			  public navParams: NavParams,
+  			  public materiasProvider:MateriasProvider) {
+  	this.materiasProvider.getMaterias().then(data=>{
+      console.log(data);
+    }).catch(error=>{
+      console.log(error);
+    });
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+    console.log(this.materias);
   }
 
   ionViewDidLoad() {
