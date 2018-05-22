@@ -13,10 +13,71 @@
     <ion-title>
       Materias
     </ion-title>
-  </ion-toolbar>
+    <ion-buttons end>
+      <button ion-button (click)="verLista()" *ngIf="verEnGrid">
+        <ion-icon name="list"></ion-icon>
+      </button>
+      <button ion-button (click)="verGrid()" *ngIf="verEnLista">
+        <ion-icon name="grid"></ion-icon>
+      </button>
+      <button ion-button (clikc)="buscarMateria!=buscarMateria">
+        <ion-icon name="search"></ion-icon>
+      </button>
+    </ion-buttons>
 
+  </ion-toolbar>
 </ion-header>
 
 <ion-content padding #mycontent>
-  
+
+  <ion-list *ngIf="verEnLista">
+    <ion-item-sliding *ngFor="let materia of materias">
+      <ion-item (click)="irANotas(materia)">
+          <h2>{{materia.nombre}}</h2>
+      </ion-item>
+      <ion-item-options side="right">
+        <button ion-button color="danger">
+          <ion-icon name="trash"></ion-icon>
+          <small>Elimina</small>
+        </button>
+        <button ion-button color="secondary">
+          <ion-icon name="trash"></ion-icon>
+          <small>Editar</small>
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+
+  <ion-grid *ngIf="verEnGrid">
+    <ion-row>
+      <ion-col col-sm-12 col-md-6 col-lg-4 col-xl-3 *ngFor="let materia of materias">
+        <ion-card>
+
+          <ion-item>
+            <h2>{{materia.nombre}}</h2>
+          </ion-item>
+
+          <ion-item>
+            <button ion-button icon-left clear item-start>
+              <ion-icon name="build"></ion-icon>
+              Editar
+            </button>
+            <button ion-button icon-left clear item-end>
+              <ion-icon name="trash"></ion-icon>
+              Eliminar
+            </button>
+          </ion-item>
+
+        </ion-card>
+      </ion-col>
+
+    </ion-row>
+  </ion-grid>
+
+  <ion-fab right bottom>
+    <button ion-fab color="green" title="nueva nota">
+      <ion-icon name="add"></ion-icon>
+    </button>
+  </ion-fab>
+
 </ion-content>

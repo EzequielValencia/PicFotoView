@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Platform,AlertController } from 'ionic-angular';
+import { Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { LoginPage } from '../pages/login/login';
@@ -13,16 +13,15 @@ export class MyApp {
   rootPage:any;
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen,
-    private loginProvider:LoginProvider,private alert:AlertController) {
+    private loginProvider:LoginProvider) {
     if(this.loginProvider.existeSessionIniciada()){
-      this.alert.create({
-        title:"Logueado",
-        subTitle:'user_id '+this.loginProvider.getCredenciales().user_id+' token '+this.loginProvider.getCredenciales().token,
-        buttons:['aceptar']
-      }).present();
+
       this.rootPage = ListaMateriasPage;
+
     }else{
+
       this.rootPage = LoginPage;
+
     }
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.

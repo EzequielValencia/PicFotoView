@@ -14,14 +14,27 @@ import { MateriasProvider } from '../../providers/materias/materias';
   templateUrl: 'lista-materias.html',
 })
 export class ListaMateriasPage {
+
   public materias:any=[];
+  public verEnLista:boolean;
+  public verEnGrid:boolean;
+  public buscarMateria:boolean;
+
   constructor(public navCtrl: NavController,
   			  public navParams: NavParams,
   			  public materiasProvider:MateriasProvider) {
+    this.verEnLista=true;
+    this.verEnGrid=false;
+    this.buscarMateria=false;
   	this.materiasProvider.getMaterias().then(data=>{
       console.log(data);
+
+      this.materias = data;
+
     }).catch(error=>{
+
       console.log(error);
+
     });
 
     console.log(this.materias);
@@ -29,6 +42,20 @@ export class ListaMateriasPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ListaMateriasPage');
+  }
+
+  public irANotas(materia:any){
+    console.log(materia);
+  }
+
+  public verLista(){
+    this.verEnLista=true;
+    this.verEnGrid=false;
+  }
+
+  public verGrid(){
+    this.verEnLista=false;
+    this.verEnGrid=true;
   }
 
 }
