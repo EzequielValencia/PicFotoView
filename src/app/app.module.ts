@@ -22,9 +22,12 @@ import {CrearHorarioPage} from '../pages/index.pages';
 import {HorarioPage} from '../pages/index.pages';
 import {RegitrarPage as RegistrarPage} from '../pages/index.pages';
 import { HomePage } from '../pages/home/home';
+import {AgregarMateriaPage} from '../pages/agregar-materia/agregar-materia';
 import { LoginProvider } from '../providers/login/login';
+
 //components
 import {MenuComponent} from '../components/menu/menu';
+import {ElementsHorarioComponent} from '../components/elements-horario/elements-horario';
 
 @NgModule({
   declarations: [
@@ -36,7 +39,9 @@ import {MenuComponent} from '../components/menu/menu';
     ListaMateriasPage,
     ListaNotasPage,
     LoginPage,
-    MenuComponent
+    MenuComponent,
+    AgregarMateriaPage,
+    ElementsHorarioComponent
   ],
   imports: [
     BrowserModule,
@@ -53,7 +58,8 @@ import {MenuComponent} from '../components/menu/menu';
     CrearHorarioPage,
     ListaMateriasPage,
     ListaNotasPage,
-    LoginPage
+    LoginPage,
+    AgregarMateriaPage
   ],
   providers: [
     StatusBar,

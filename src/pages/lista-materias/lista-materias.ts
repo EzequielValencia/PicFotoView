@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
 import { MateriasProvider } from '../../providers/materias/materias';
+
+import { AgregarMateriaPage } from '../agregar-materia/agregar-materia';
 /**
  * Generated class for the ListaMateriasPage page.
  *
@@ -22,30 +24,38 @@ export class ListaMateriasPage {
 
   constructor(public navCtrl: NavController,
   			  public navParams: NavParams,
-  			  public materiasProvider:MateriasProvider) {
+  			  public materiasProvider:MateriasProvider,
+          public modalController:ModalController) {
     this.verEnLista=true;
     this.verEnGrid=false;
     this.buscarMateria=false;
-  	this.materiasProvider.getMaterias().then(data=>{
-      console.log(data);
+    this.obtenerMaterias();
+  }
+
+  public obtenerMaterias(){
+    this.materiasProvider.getMaterias().then(data=>{
 
       this.materias = data;
-
     }).catch(error=>{
 
-      console.log(error);
-
     });
-
-    console.log(this.materias);
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad ListaMateriasPage');
+    
   }
 
   public irANotas(materia:any){
     console.log(materia);
+  }
+
+  public agregarMateria(){
+      console.log("Agregar materia");
+      let modalAgregarMateria = this.modalController.create(AgregarMateriaPage);
+      modalAgregarMateria.onDidDismiss(()=>{
+        this.obtenerMaterias();
+      });
+      modalAgregarMateria.present();
   }
 
   public verLista(){

@@ -1,0 +1,85 @@
+<!--
+  Generated template for the AgregarMateriaPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="green">
+    <ion-buttons start>
+      <button ion-button (click)="cerrar()">
+        Cerrar
+      </button>
+    </ion-buttons>
+    <ion-title>Agregar Materia</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <div text-center>
+    <h5 >Escribe los datos de la nueva materia</h5>
+  </div>
+  <form   [formGroup]="form"  (ngSubmit)="manage(form.value)">
+   	  <ion-list margin-bottom>
+         <ion-item margin-bottom>
+            <ion-label floating>Nombre</ion-label>
+
+            <!-- Assign our first FormControl of name to the input field -->
+            <ion-input type="text"  formControlName="nombreMateria"></ion-input>
+         </ion-item>
+
+	     <div formArrayName="horario"  margin-bottom>
+
+            <section [formGroupName]="i" *ngFor="let tech of form.controls.horario.controls; let i = index">
+               <ion-item-group>
+                 <ion-item>
+                   <ion-label>Día</ion-label>
+                   <ion-select  formControlName="dia">
+                     <ion-option value="1">Domingo</ion-option>
+                     <ion-option value="2">Lunes</ion-option>
+                     <ion-option value="3">Martes</ion-option>
+                     <ion-option value="4">Miercoles</ion-option>
+                     <ion-option value="5">Jueves</ion-option>
+                     <ion-option value="6">Viernes</ion-option>
+                     <ion-option value="7">Sabado</ion-option>
+                   </ion-select>
+                 </ion-item>
+
+                  <ion-item>
+                     <ion-label floating>De: </ion-label>
+                     <ion-datetime displayFormat="HH:mm" formControlName="horaInicio"></ion-datetime>
+                  </ion-item>
+                  <ion-item>
+                     <ion-label floating>A: </ion-label>
+                     <ion-datetime displayFormat="HH:mm" formControlName="horaFin"></ion-datetime>
+                  </ion-item>
+
+                  <!-- Allow generated input field to be removed -->
+                  <span float-right ion-button icon-left clear *ngIf="form.controls.horario.length > 1" (click)="removeInputField(i)">
+                     <ion-icon name="close"></ion-icon>
+                     Quitar
+                  </span>
+               </ion-item-group>
+            </section>
+         </div>
+
+
+         <!-- Allow new input field to be generated/added -->
+         <span ion-button float-left icon-left clear (click)="addNewInputField()">
+               <ion-icon name="add"></ion-icon>
+               Agregar horario
+         </span>
+
+
+   	 </ion-list>
+
+
+   	 <!-- Only allow form to be submitted IF validation criteria for
+              input fields has been successfully passed -->
+         <button ion-button block margin-top color="primary" text-center>Submit</button>
+   </form>
+
+</ion-content>

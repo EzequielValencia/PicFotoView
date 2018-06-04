@@ -33,13 +33,12 @@ export class LoginPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad LoginPage');
+  
   }
 
   public login(){
     this.mostrarSpiner=true;
-    console.log("Estoy en login "+this.mostrarSpiner);
-    console.log("Email "+this.email+" pass: "+this.password);
+
     this.loginProvider.hacerLogin(this.email,this.password).subscribe((data:any)=>{
       if(data.status ==404){
 
@@ -50,7 +49,7 @@ export class LoginPage {
         }).present();
 
       }else if(data.status == 200){
-        
+
         if(this.platform.is('cordova')){
           this.storage.set('token',data.token);
           this.storage.set('user_id',data.user_id);
@@ -58,7 +57,7 @@ export class LoginPage {
           localStorage.setItem('token',data.token);
           localStorage.setItem('user_id',data.user_id);
         }
-        
+
         this.toast.create({
            message:"Bienvenido",
            duration:3000
@@ -66,7 +65,7 @@ export class LoginPage {
         this.navCtrl.setRoot(ListaMateriasPage);
 
       }else{
-        
+
         this.alert.create({
           title:"Problema al iniciar sesión",
           subTitle:"Intentelo más tarde",
@@ -74,7 +73,7 @@ export class LoginPage {
         }).present();
 
       }
-      
+
       this.mostrarSpiner=false;
     });
   }

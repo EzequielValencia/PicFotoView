@@ -14,6 +14,9 @@
       Materias
     </ion-title>
     <ion-buttons end>
+      <button ion-button (click)="agregarMateria()">
+        <ion-icon name="add"></ion-icon>
+      </button>
       <button ion-button (click)="verLista()" *ngIf="verEnGrid">
         <ion-icon name="list"></ion-icon>
       </button>
@@ -28,7 +31,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content padding #mycontent>
+<ion-content #mycontent>
 
   <ion-list *ngIf="verEnLista">
     <ion-item-sliding *ngFor="let materia of materias">
@@ -40,8 +43,8 @@
           <ion-icon name="trash"></ion-icon>
           <small>Elimina</small>
         </button>
-        <button ion-button color="secondary">
-          <ion-icon name="trash"></ion-icon>
+        <button ion-button color="primary">
+          <ion-icon name="build"></ion-icon>
           <small>Editar</small>
         </button>
       </ion-item-options>
@@ -50,9 +53,8 @@
 
   <ion-grid *ngIf="verEnGrid">
     <ion-row>
-      <ion-col col-sm-12 col-md-6 col-lg-4 col-xl-3 *ngFor="let materia of materias">
+      <ion-col col-md-4  *ngFor="let materia of materias">
         <ion-card>
-
           <ion-item>
             <h2>{{materia.nombre}}</h2>
           </ion-item>
