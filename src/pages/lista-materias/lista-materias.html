@@ -35,9 +35,9 @@
 
   <ion-list *ngIf="verEnLista">
     <ion-item-sliding *ngFor="let materia of materias">
-      <ion-item (click)="irANotas(materia)">
+      <button ion-item (click)="irANotas(materia)">
           <h2>{{materia.nombre}}</h2>
-      </ion-item>
+      </button>
       <ion-item-options side="right">
         <button ion-button color="danger">
           <ion-icon name="trash"></ion-icon>
@@ -57,6 +57,10 @@
         <ion-card>
           <ion-item>
             <h2>{{materia.nombre}}</h2>
+            <div  *ngFor="let horario of materia.horario" text-capitalize  text-center>
+                <strong>{{horario.diasemana}}</strong>
+                {{horario.horainicio}} a {{horario.horafin}}
+            </div>
           </ion-item>
 
           <ion-item>
@@ -72,12 +76,11 @@
 
         </ion-card>
       </ion-col>
-
     </ion-row>
   </ion-grid>
 
   <ion-fab right bottom>
-    <button ion-fab color="green" title="nueva nota">
+    <button ion-fab color="green" title="nueva nota" (click)="irANota()">
       <ion-icon name="add"></ion-icon>
     </button>
   </ion-fab>

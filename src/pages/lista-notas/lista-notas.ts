@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
+import {CrearNotaPage} from '../index.pages';
 /**
  * Generated class for the ListaNotasPage page.
  *
@@ -14,7 +14,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'lista-notas.html',
 })
 export class ListaNotasPage {
-
+  public paginaNota = CrearNotaPage;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 

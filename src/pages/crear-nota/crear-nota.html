@@ -6,13 +6,24 @@
 -->
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>crearNota</ion-title>
-  </ion-navbar>
+  <ion-toolbar >
+    <ion-title>
+      {{nota.titulo}}
+    </ion-title>
+    <ion-buttons end>
+      <button ion-button>
+        Guardar
+      </button>
+      <button ion-button navPop>
+        Cerrar
+      </button>
+    </ion-buttons>
+
+  </ion-toolbar>
 
 </ion-header>
 
 
-<ion-content padding>
+<ion-content padding #mycontent>
 
 </ion-content>

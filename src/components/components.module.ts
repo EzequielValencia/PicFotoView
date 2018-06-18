@@ -1,11 +1,8 @@
 import { NgModule } from '@angular/core';
 import { MenuComponent } from './menu/menu';
-import { ElementsHorarioComponent } from './elements-horario/elements-horario';
 @NgModule({
-	declarations: [MenuComponent,
-    ElementsHorarioComponent],
+	declarations: [MenuComponent],
 	imports: [],
-	exports: [MenuComponent,
-    ElementsHorarioComponent]
+	exports: [MenuComponent]
 })
 export class ComponentsModule {}

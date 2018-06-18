@@ -14,7 +14,11 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'crear-nota.html',
 })
 export class CrearNotaPage {
-
+  private nota:any={
+    titulo:'',
+    cuerpo:'',
+    adjuntos:[]
+  };
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
@@ -22,4 +26,7 @@ export class CrearNotaPage {
     console.log('ionViewDidLoad CrearNotaPage');
   }
 
+  public cerrarNota(){
+    
+  }
 }

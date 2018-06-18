@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController,Platform,App } from 'ionic-angular';
 import { MateriasProvider } from '../../providers/materias/materias';
-
+import {CrearNotaPage} from '../crear-nota/crear-nota';
 import { AgregarMateriaPage } from '../agregar-materia/agregar-materia';
 /**
  * Generated class for the ListaMateriasPage page.
@@ -21,11 +21,13 @@ export class ListaMateriasPage {
   public verEnLista:boolean;
   public verEnGrid:boolean;
   public buscarMateria:boolean;
-
+  public paginaNota = CrearNotaPage;
   constructor(public navCtrl: NavController,
   			  public navParams: NavParams,
   			  public materiasProvider:MateriasProvider,
-          public modalController:ModalController) {
+          public modalController:ModalController,
+          public platform:Platform,
+          public app:App) {
     this.verEnLista=true;
     this.verEnGrid=false;
     this.buscarMateria=false;
@@ -34,15 +36,15 @@ export class ListaMateriasPage {
 
   public obtenerMaterias(){
     this.materiasProvider.getMaterias().then(data=>{
-
       this.materias = data;
+      console.log(this.materias);
     }).catch(error=>{
 
     });
   }
 
   ionViewDidLoad() {
-    
+
   }
 
   public irANotas(materia:any){
@@ -68,4 +70,8 @@ export class ListaMateriasPage {
     this.verEnGrid=true;
   }
 
+  public irANota(){
+    console.log(this.platform.is('core'));
+    this.app.getActiveNav().push(CrearNotaPage);
+  }
 }

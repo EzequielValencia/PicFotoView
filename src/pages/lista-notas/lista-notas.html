@@ -6,13 +6,24 @@
 -->
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>listaNotas</ion-title>
-  </ion-navbar>
+  <ion-toolbar >
+    <button ion-button menuToggle start>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      Notas
+    </ion-title>
 
+  </ion-toolbar>
 </ion-header>
 
 
-<ion-content padding>
+<ion-content #mycontent>
 
+
+  <ion-fab right bottom>
+    <button ion-fab color="green" title="nueva nota" [navPush]="paginaNota">
+      <ion-icon name="add"></ion-icon>
+    </button>
+  </ion-fab>
 </ion-content>

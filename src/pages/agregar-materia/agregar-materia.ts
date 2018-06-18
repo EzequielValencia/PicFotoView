@@ -59,16 +59,16 @@ export class AgregarMateriaPage {
       this.materiasProvider.guardarMateria(val).subscribe((resp)=>{
         if(resp.ok){
           this.alerta.create({
-            title:"Exito",
-            subTitle:resp.message,
-            buttons:['Aceptar']
+            title: "Exito",
+            subTitle: resp.message,
+            buttons: ['Aceptar']
           }).present();
           this.viewController.dismiss();
         }else{
           this.alerta.create({
-            title:"Error",
-            subTitle:resp.message,
-            buttons:['Aceptar']
+            title: "Error",
+            subTitle: resp.message,
+            buttons: ['Aceptar']
           }).present();
         }
       });

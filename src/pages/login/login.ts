@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { LoginProvider } from '../../providers/login/login';
-import { AlertController, Platform, ToastController } from 'ionic-angular';
+import { AlertController, Platform, ToastController,IonicPage, NavController, NavParams } from 'ionic-angular';
 import {Storage} from '@ionic/storage';
-import { ListaMateriasPage } from '../lista-materias/lista-materias';
+import { ListaMateriasPage } from '../index.pages';
+import {ListaNotasPage} from '../lista-notas/lista-notas';
 import { RegitrarPage } from '../regitrar/regitrar'
 
 /**
@@ -33,7 +33,7 @@ export class LoginPage {
   }
 
   ionViewDidLoad() {
-  
+
   }
 
   public login(){
@@ -62,7 +62,7 @@ export class LoginPage {
            message:"Bienvenido",
            duration:3000
         }).present();
-        this.navCtrl.setRoot(ListaMateriasPage);
+        this.navCtrl.setRoot(ListaNotasPage);
 
       }else{
 

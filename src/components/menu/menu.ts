@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import {App} from 'ionic-angular';
-import { AlertController,MenuController } from 'ionic-angular';
+import { AlertController,MenuController,App} from 'ionic-angular';
 import {LoginProvider} from '../../providers/login/login';
 import {LoginPage}  from '../../pages/login/login';
+import {ListaNotasPage,ListaMateriasPage} from '../../pages/index.pages';
 
 /**
  * Generated class for the MenuComponent component.
@@ -41,5 +41,15 @@ export class MenuComponent {
         }
       }]
     }).present();
+  }
+
+  public verNotas(){
+    this.app.getActiveNav().setRoot(ListaNotasPage);
+    this.menu.close();
+  }
+
+  public verMaterias(){
+    this.app.getActiveNav().setRoot(ListaMateriasPage);
+    this.menu.close();
   }
 }
